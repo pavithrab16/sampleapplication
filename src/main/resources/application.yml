@@ -1,0 +1,51 @@
+camel:
+  component:
+    servlet:
+      mapping:
+        contextPath: /storefront/*
+  springboot:
+    jmx-enabled: true
+org:
+  apache:
+    camel:
+      jmx:
+        disabled: true
+server:
+  servlet:
+    contextPath: /sampleservices
+  tomcat:
+    max-http-header-size: 18000
+sample:
+  route:
+    ping: direct:restSampleClientPing
+  auth:
+    key: xSkSessionId
+    header: x-sk-session-id
+  accessControl:
+    allowOrigin: '*'
+    allowMethods: GET, HEAD, POST, PUT, DELETE, TRACE, OPTIONS, CONNECT, PATCH
+    allowHeaders: Origin, Accept, X-Requested-With, Content-Type, Access-Control-Request-Method, Access-Control-Request-Headers, x-total-count
+    maxAge: 3600
+  app:
+    version: 1.0
+spring:
+  application:
+    name: sample
+  cloud:
+    zookeeper:
+      config:
+        enabled: true
+        root: local
+      connect-string: localhost:2181
+      enabled: true
+  jmx:
+    enabled: false
+springfox:
+  documentation:
+    swagger:
+      v2:
+        path: /storefront/v2/api-docs
+swagger:
+  server:
+    domain: localhost
+    port: 8080
